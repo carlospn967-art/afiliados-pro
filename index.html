@@ -5,408 +5,859 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Afiliados Pro - Encontre ofertas, produtos e oportunidades para comprar melhor.">
 <title>AFILIADOS PRO | Ofertas Inteligentes</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 :root {
-    --cor-primaria: #38bdf8;
-    --cor-destaque: #168bd1;
-    --cor-fundo-escuro: #030810;
-    --cor-fundo: #07111f;
-    --cor-fundo-claro: #0b1929;
-    --cor-card: #10233a;
-    --cor-borda: #1b456c;
-    --cor-texto: #e0edf9;
-    --cor-texto-suave: #94a9c3;
-    --sombra-suave: 0 8px 30px rgba(0,0,0,0.3);
-    --sombra-destaque: 0 10px 40px rgba(56,189,248,0.15);
-    --raio-borda: 16px;
-    --transicao: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    --bg-main: #070b14;
+    --bg-dark: #0d1222;
+    --bg-card: #131a2e;
+    --bg-card-hover: #1a233a;
+    --bg-light: #f4f7fb;
+    --primary: #4f46e5; /* Indigo/Roxo da referência */
+    --primary-hover: #4338ca;
+    --accent: #8b5cf6;
+    --text-white: #ffffff;
+    --text-gray-light: #a1a1aa;
+    --text-dark: #111827;
+    --text-muted-dark: #6b7280;
+    --border-dark: #232f4b;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition: .3s ease;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #030810 0%, #07111f 40%, #0b1929 100%);
-    color: var(--cor-texto);
-    line-height: 1.6;
-    min-height: 100vh;
+    background: var(--bg-main);
+    color: var(--text-white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* =========================================
+   HEADER
+   ========================================= */
+.top-bar {
+    background: #0a0f1c;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border-dark);
 }
 
 header {
-    background: rgba(3,8,16,0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(56,189,248,0.15);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    padding: 20px 5%;
+    background: var(--bg-main);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.logo .azul {
-    color: var(--cor-primaria);
-}
-
-.logo .branco {
-    color: white;
-}
-
-nav {
+    font-size: 22px;
+    font-weight: 800;
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
 }
 
-nav a {
-    color: var(--cor-texto-suave);
-    text-decoration: none;
-    padding: 10px 18px;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: var(--transicao);
-}
-
-nav a:hover {
-    color: var(--cor-primaria);
-    background: rgba(56,189,248,0.1);
-}
-
-.hero {
-    padding: 160px 8% 120px;
-    text-align: center;
-    background: radial-gradient(ellipse at top, rgba(22,139,209,0.15) 0%, transparent 60%),
-                linear-gradient(180deg, transparent 0%, rgba(7,17,31,0.5) 100%);
-}
-
-.hero h1 {
-    font-size: clamp(32px, 7vw, 56px);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: -1px;
-}
-
-.hero h1 span {
-    color: var(--cor-primaria);
-    display: inline-block;
-    position: relative;
-}
-
-.hero p {
-    color: var(--cor-texto-suave);
-    font-size: 18px;
-    max-width: 650px;
-    margin: 0 auto 32px;
-    line-height: 1.7;
-}
-
-.botao {
-    display: inline-flex;
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    border-radius: 6px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 16px 36px;
-    background: linear-gradient(135deg, var(--cor-destaque), var(--cor-primaria));
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 600;
     font-size: 16px;
-    letter-spacing: 0.3px;
-    border: none;
-    box-shadow: 0 4px 20px rgba(56,189,248,0.3);
-    transition: var(--transicao);
+}
+
+nav { display: flex; gap: 30px; }
+nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray-light);
+    transition: color var(--transition);
+}
+nav a:hover { color: var(--text-white); }
+
+.header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.header-actions svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--text-white);
+    stroke-width: 2;
     cursor: pointer;
+    transition: stroke var(--transition);
 }
+.header-actions svg:hover { stroke: var(--primary); }
 
-.botao:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(56,189,248,0.4);
-}
-
-section {
-    padding: 80px 8%;
-}
-
-.titulo {
-    text-align: center;
-    font-size: clamp(26px, 5vw, 36px);
-    font-weight: 700;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-}
-
-.titulo span {
-    color: var(--cor-primaria);
-}
-
-.subtitulo {
-    text-align: center;
-    color: var(--cor-texto-suave);
-    font-size: 17px;
-    margin-bottom: 48px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
-}
-
-.card {
-    background: rgba(16,35,58,0.6);
-    backdrop-filter: blur(8px);
-    padding: 32px 24px;
-    text-align: center;
-    border: 1px solid rgba(56,189,248,0.1);
-    border-radius: var(--raio-borda);
-    transition: var(--transicao);
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 5% 80px;
+    background: radial-gradient(circle at 70% 50%, #1a1c3b 0%, var(--bg-main) 60%);
     position: relative;
     overflow: hidden;
 }
 
-.card::before {
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    color: #a78bfa;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+}
+.hero h1 span {
+    color: #8b5cf6;
+}
+
+.hero p {
+    color: var(--text-gray-light);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background var(--transition), transform var(--transition);
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.hero-image img {
+    width: 100%;
+    max-width: 700px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    z-index: 1;
+}
+
+.hero-scribble {
+    position: absolute;
+    right: 15%;
+    top: 20%;
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    color: #8b5cf6;
+    font-size: 28px;
+    transform: rotate(-10deg);
+    opacity: 0.8;
+    z-index: 2;
+    line-height: 1.2;
+}
+
+/* =========================================
+   TRUST BADGES
+   ========================================= */
+.trust-badges {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 40px;
+}
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.badge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.badge-text h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+.badge-text p {
+    font-size: 11px;
+    color: var(--text-gray-light);
+}
+
+/* =========================================
+   CATEGORIES SECTION (Dark Card)
+   ========================================= */
+.section-padding { padding: 40px 5%; }
+
+.categories-wrapper {
+    background: var(--bg-dark);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+.section-header .view-all {
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.cat-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 20px 15px;
+    text-align: center;
+    transition: transform var(--transition), background var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.cat-card:hover {
+    transform: translateY(-5px);
+    background: var(--bg-card-hover);
+    border-color: rgba(79, 70, 229, 0.3);
+}
+.cat-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+.cat-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.cat-card p {
+    font-size: 11px;
+    color: var(--text-gray-light);
+}
+
+/* =========================================
+   FEATURED PRODUCTS (Light Section)
+   ========================================= */
+.light-section {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    padding: 70px 5%;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    margin-top: 40px;
+}
+
+.light-section .section-header h2 { color: var(--text-dark); }
+.light-section .section-header .view-all { color: var(--primary); }
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.badge-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #8b5cf6;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 2;
+}
+.badge-tag.dark { background: #1f2937; }
+
+.product-img {
+    width: 100%;
+    height: 180px;
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.product-img img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transition: transform var(--transition);
+}
+.product-card:hover .product-img img {
+    transform: scale(1.05);
+}
+
+.product-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.product-desc {
+    font-size: 11px;
+    color: var(--text-muted-dark);
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.rating {
+    font-size: 11px;
+    color: #f59e0b;
+    margin-top: 4px;
+}
+.rating span {
+    color: var(--text-muted-dark);
+}
+
+.cart-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f3e8ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+}
+.cart-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* =========================================
+   PROMO BANNERS
+   ========================================= */
+.promo-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 40px 5%;
+    background: var(--bg-light);
+}
+
+.promo-banner {
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 280px;
+}
+
+.promo-1 {
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    color: white;
+}
+.promo-1::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
+    right: -20px;
+    bottom: -20px;
+    width: 300px;
+    height: 300px;
+    background: url('https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=600&auto=format&fit=crop') no-repeat center/contain;
+    opacity: 0.8;
+    transform: rotate(-15deg);
+}
+
+.promo-2 {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+}
+.promo-2::after {
+    content: '';
+    position: absolute;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--cor-destaque), var(--cor-primaria));
-    opacity: 0;
-    transition: var(--transicao);
+    bottom: 0;
+    width: 250px;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop') no-repeat center/cover;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(56,189,248,0.4);
-    box-shadow: var(--sombra-destaque);
-    background: rgba(16,35,58,0.9);
+.promo-content {
+    position: relative;
+    z-index: 2;
+    max-width: 60%;
 }
-
-.card:hover::before {
-    opacity: 1;
+.promo-subtitle {
+    color: #a78bfa;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
-
-.icone {
-    font-size: 52px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+.promo-banner h3 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
-
-.card h3 {
-    margin-bottom: 12px;
-    color: var(--cor-primaria);
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.card p {
-    color: var(--cor-texto-suave);
-    line-height: 1.6;
-    font-size: 15px;
-    margin-bottom: 8px;
-}
-
-.card .botao {
-    margin-top: 24px;
-    width: 100%;
-    padding: 13px 20px;
-    font-size: 15px;
-    background: transparent;
-    border: 2px solid var(--cor-primaria);
-    box-shadow: none;
-    color: var(--cor-primaria);
-}
-
-.card .botao:hover {
-    background: var(--cor-primaria);
-    color: var(--cor-fundo);
-}
-
-.aviso {
+.promo-banner h3 span { color: #8b5cf6; }
+.promo-banner p {
     font-size: 13px;
-    color: var(--cor-texto-suave);
-    margin-top: 40px;
-    padding: 20px;
-    background: rgba(56,189,248,0.05);
-    border-radius: 10px;
-    border-left: 3px solid var(--cor-primaria);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #cbd5e1;
+    margin-bottom: 25px;
+}
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px;
+    font-weight: 600;
+    transition: background var(--transition), border-color var(--transition);
+}
+.btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.4);
 }
 
-.sobre {
-    background: rgba(11,25,41,0.4);
-    border-top: 1px solid rgba(56,189,248,0.08);
-    border-bottom: 1px solid rgba(56,189,248,0.08);
-}
-
-.sobre p {
-    max-width: 700px;
-    margin: 20px auto;
-    line-height: 1.8;
-    color: var(--cor-texto-suave);
-    font-size: 17px;
-}
-
-.contato {
-    text-align: center;
-}
-
-.contato .botao {
-    margin-top: 12px;
-}
-
+/* =========================================
+   FOOTER
+   ========================================= */
 footer {
-    background: rgba(3,8,16,0.9);
-    padding: 40px 8%;
-    text-align: center;
-    color: var(--cor-texto-suave);
-    border-top: 1px solid rgba(56,189,248,0.1);
-    font-size: 14px;
+    background: var(--bg-main);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 5%;
 }
 
-footer p {
-    margin-bottom: 8px;
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.footer-nav { display: flex; gap: 30px; }
+.footer-nav a {
+    font-size: 13px;
+    color: var(--text-gray-light);
+}
+.footer-nav a:hover { color: white; }
+
+.social-icons { display: flex; gap: 15px; }
+.social-icons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+}
+.social-icons a:hover { background: var(--primary); }
+
+.footer-legal {
+    text-align: center;
+    font-size: 12px;
+    color: #52525b;
+    margin-top: 20px;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media (max-width: 1024px) {
+    .hero h1 { font-size: 40px; }
+    .categories-grid { grid-template-columns: repeat(3, 1fr); }
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .promo-section { grid-template-columns: 1fr; }
+    .promo-content { max-width: 80%; }
 }
 
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px 5%;
-    }
-
-    nav a {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    .hero {
-        padding: 140px 5% 90px;
-    }
-
-    section {
-        padding: 60px 5%;
-    }
+    header { flex-direction: column; gap: 15px; }
+    nav { display: none; }
+    .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+    .hero p { margin: 0 auto 30px; }
+    .hero-image { margin-top: 40px; justify-content: center; }
+    .hero-scribble { display: none; }
+    .trust-badges { flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .promo-content { max-width: 100%; }
+    .promo-banner::after { opacity: 0.3; }
+    .footer-bottom { flex-direction: column; gap: 20px; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+    OFERTAS EXCLUSIVAS | FRETE GRÁTIS ACIMA DE R$ 199
+</div>
+
+<!-- HEADER -->
 <header>
-    <div class="logo"><span class="azul">AFILIADOS</span><span class="branco"> PRO</span></div>
+    <div class="logo">
+        <div class="logo-icon">V</div>
+        AFILIADOS PRO
+    </div>
+
     <nav>
         <a href="#inicio">Início</a>
         <a href="#ofertas">Ofertas</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
     </nav>
+
+    <div class="header-actions">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    </div>
 </header>
 
+<!-- HERO -->
 <div class="hero" id="inicio">
-    <h1>AS MELHORES OFERTAS <span>ESTÃO AQUI!</span></h1>
-    <p>Descubra produtos selecionados, tecnologia, acessórios e ofertas especiais em um só lugar. Encontre o que procura e compre com praticidade e confiança.</p>
-    <a href="#ofertas" class="botao">EXPLORAR OFERTAS ↓</a>
+    <div class="hero-content">
+        <div class="hero-subtitle">TECNOLOGIA INTELIGENTE, VIDA MELHOR.</div>
+        <h1>Atualize sua <span>Tech</span><br>do Dia a Dia</h1>
+        <p>Descubra os mais recentes gadgets, dispositivos inteligentes e produtos de tecnologia premium — tudo em um só lugar. Compre com confiança e tenha uma experiência perfeita.</p>
+        <a href="#ofertas" class="btn-primary">
+            Comprar Agora
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+    </div>
+    
+    <div class="hero-image">
+        <div class="hero-scribble">Smart Tech<br>Smarter<br>You</div>
+        <!-- Imagem ilustrativa de Tech -->
+        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=1200&auto=format&fit=crop" alt="Setup Tech Premium" style="border-radius: 20px; mix-blend-mode: lighten;">
+    </div>
 </div>
 
-<section id="ofertas">
-    <h2 class="titulo">NOSSAS <span>OFERTAS</span></h2>
-    <p class="subtitulo">Produtos selecionados com cuidado para você encontrar as melhores oportunidades.</p>
-
-    <div class="produtos">
-        <div class="card">
-            <div class="icone">📱</div>
-            <h3>Celulares</h3>
-            <p>Smartphones e acessórios para manter você conectado com o que importa.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
-        </div>
-
-        <div class="card">
-            <div class="icone">💻</div>
-            <h3>Informática</h3>
-            <p>Notebooks, computadores e periféricos para produtividade e entretenimento.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
-        </div>
-
-        <div class="card">
-            <div class="icone">🎧</div>
-            <h3>Eletrônicos</h3>
-            <p>Fones, caixas de som e equipamentos para você aproveitar ao máximo cada momento.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
-        </div>
-
-        <div class="card">
-            <div class="icone">🏠</div>
-            <h3>Casa e Decoração</h3>
-            <p>Soluções práticas e elegantes para tornar seu lar mais aconchegante e funcional.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
-        </div>
-
-        <div class="card">
-            <div class="icone">⌚</div>
-            <h3>Relógios</h3>
-            <p>Estilo e precisão em cada marcação. Encontre o modelo que combina com você.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
-        </div>
-
-        <div class="card">
-            <div class="icone">🎮</div>
-            <h3>Games</h3>
-            <p>Equipamentos e acessórios para levar sua experiência de jogo a outro nível.</p>
-            <a href="COLOQUE_SEU_LINK_AQUI" class="botao">VER OFERTA</a>
+<!-- TRUST BADGES -->
+<div class="trust-badges">
+    <div class="badge">
+        <div class="badge-icon">🚚</div>
+        <div class="badge-text">
+            <h4>Frete Grátis</h4>
+            <p>Em pedidos acima de R$ 199</p>
         </div>
     </div>
+    <div class="badge">
+        <div class="badge-icon">🛡️</div>
+        <div class="badge-text">
+            <h4>Pagamento Seguro</h4>
+            <p>Ambiente 100% protegido</p>
+        </div>
+    </div>
+    <div class="badge">
+        <div class="badge-icon">🎧</div>
+        <div class="badge-text">
+            <h4>Suporte 24/7</h4>
+            <p>Atendimento especializado</p>
+        </div>
+    </div>
+    <div class="badge">
+        <div class="badge-icon">⭐</div>
+        <div class="badge-text">
+            <h4>Loja Confiável</h4>
+            <p>Produtos originais e garantidos</p>
+        </div>
+    </div>
+</div>
 
-    <p class="aviso">
-        <strong>Aviso:</strong> alguns links presentes no site são links de afiliados. Isso significa que podemos receber uma pequena comissão quando você compra através deles, sem qualquer custo adicional para você. Agradecemos por apoiar nosso trabalho!
+<!-- CATEGORIES -->
+<div class="section-padding">
+    <div class="categories-wrapper">
+        <div class="section-header">
+            <h2>Nossas Categorias</h2>
+            <a href="#ofertas" class="view-all">Ver Todas <span>→</span></a>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=200&auto=format&fit=crop" alt="Notebooks">
+                <h4>Notebooks</h4>
+                <p>& Computadores</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=200&auto=format&fit=crop" alt="Celulares">
+                <h4>Celulares</h4>
+                <p>& Tablets</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=200&auto=format&fit=crop" alt="Áudio">
+                <h4>Áudio</h4>
+                <p>& Fones de Ouvido</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=200&auto=format&fit=crop" alt="Smartwatches">
+                <h4>Smartwatches</h4>
+                <p>& Vestíveis</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=200&auto=format&fit=crop" alt="Games">
+                <h4>Games</h4>
+                <p>& Consoles</p>
+            </div>
+            <div class="cat-card">
+                <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?q=80&w=200&auto=format&fit=crop" alt="Acessórios">
+                <h4>Acessórios</h4>
+                <p>& Mais</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section class="light-section" id="ofertas">
+    <div class="section-header" style="margin-bottom: 40px;">
+        <div>
+            <div style="font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 1px; margin-bottom: 5px;">PRODUTOS EM DESTAQUE</div>
+            <h2 style="font-size: 28px; color: var(--text-dark);">Melhores Escolhas</h2>
+        </div>
+        <a href="#" class="view-all" style="color: var(--primary);">Ver Todos <span>→</span></a>
+    </div>
+
+    <div class="products-grid">
+        <!-- Produto 1 -->
+        <div class="product-card">
+            <div class="badge-tag">-35%</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=400&auto=format&fit=crop" alt="MacBook">
+            </div>
+            <h4 class="product-title">MacBook Air M2</h4>
+            <p class="product-desc">Apple | 13.6" | 256GB</p>
+            <div class="product-price-row">
+                <div>
+                    <div class="price">R$ 8.999</div>
+                    <div class="rating">★★★★★ <span>(124)</span></div>
+                </div>
+                <div class="cart-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produto 2 -->
+        <div class="product-card">
+            <div class="badge-tag">-10%</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=400&auto=format&fit=crop" alt="iPhone 15">
+            </div>
+            <h4 class="product-title">iPhone 15 Pro</h4>
+            <p class="product-desc">Apple | 256GB | Titânio</p>
+            <div class="product-price-row">
+                <div>
+                    <div class="price">R$ 8.099</div>
+                    <div class="rating">★★★★☆ <span>(89)</span></div>
+                </div>
+                <div class="cart-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="product-card">
+            <div class="badge-tag">-15%</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?q=80&w=400&auto=format&fit=crop" alt="AirPods">
+            </div>
+            <h4 class="product-title">AirPods Pro (2ª Ger)</h4>
+            <p class="product-desc">Apple | Cancelamento de Ruído</p>
+            <div class="product-price-row">
+                <div>
+                    <div class="price">R$ 1.899</div>
+                    <div class="rating">★★★★★ <span>(210)</span></div>
+                </div>
+                <div class="cart-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produto 4 -->
+        <div class="product-card">
+            <div class="badge-tag dark">Novo</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=400&auto=format&fit=crop" alt="Galaxy Watch">
+            </div>
+            <h4 class="product-title">Galaxy Watch 6</h4>
+            <p class="product-desc">Samsung | 44mm | Bluetooth</p>
+            <div class="product-price-row">
+                <div>
+                    <div class="price">R$ 1.499</div>
+                    <div class="rating">★★★★☆ <span>(62)</span></div>
+                </div>
+                <div class="cart-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Produto 5 -->
+        <div class="product-card">
+            <div class="badge-tag dark">-20%</div>
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=400&auto=format&fit=crop" alt="PS5">
+            </div>
+            <h4 class="product-title">Console PS5</h4>
+            <p class="product-desc">Sony | 825GB | Edição Digital</p>
+            <div class="product-price-row">
+                <div>
+                    <div class="price">R$ 3.499</div>
+                    <div class="rating">★★★★★ <span>(110)</span></div>
+                </div>
+                <div class="cart-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROMO BANNERS -->
+<div class="promo-section">
+    <div class="promo-banner promo-1">
+        <div class="promo-content">
+            <div class="promo-subtitle">OFERTA POR TEMPO LIMITADO</div>
+            <h3>Essenciais para Games<br>Até <span>40% OFF</span></h3>
+            <p>Eleve seu setup com os consoles, acessórios e jogos mais recentes.</p>
+            <a href="#ofertas" class="btn-outline">Ver Ofertas →</a>
+        </div>
+    </div>
+    
+    <div class="promo-banner promo-2">
+        <div class="promo-content">
+            <div class="promo-subtitle">PRODUTIVIDADE</div>
+            <h3>Trabalhe Melhor.<br><span>Viva Melhor.</span></h3>
+            <p>Dispositivos inteligentes para um amanhã mais produtivo.</p>
+            <a href="#ofertas" class="btn-outline">Explorar →</a>
+        </div>
+    </div>
+</div>
+
+<!-- SOBRE -->
+<section class="section-padding" id="sobre" style="text-align: center; padding-bottom: 80px;">
+    <h2 style="font-size: 28px; margin-bottom: 20px;">Sobre a Afiliados Pro</h2>
+    <p style="color: var(--text-gray-light); max-width: 700px; margin: 0 auto; line-height: 1.8;">
+        A AFILIADOS PRO é uma vitrine digital de produtos e recomendações. Nosso objetivo é ajudar você a descobrir ofertas, comparar opções e encontrar produtos úteis para o seu dia a dia.
     </p>
 </section>
 
-<section class="sobre" id="sobre">
-    <h2 class="titulo">SOBRE A <span>AFILIADOS PRO</span></h2>
-    <p>A AFILIADOS PRO é uma vitrine digital moderna e confiável de produtos e recomendações. Nosso objetivo é simplificar sua busca, reunindo em um só lugar ofertas verificadas, comparando opções e indicando produtos que realmente valem a pena.</p>
-    <p>Trabalhamos com transparência e dedicação para oferecer sempre o melhor conteúdo, ajudando você a fazer escolhas inteligentes com segurança e praticidade.</p>
-</section>
-
-<section class="contato" id="contato">
-    <h2 class="titulo">FALE <span>CONOSCO</span></h2>
-    <p class="subtitulo">Tem dúvidas, sugestões ou quer uma parceria? Estamos prontos para conversar com você.</p>
-    <a href="mailto:SEUEMAIL@gmail.com" class="botao">✉ ENVIAR MENSAGEM</a>
-</section>
-
-<footer>
-    <p><strong>© 2026 AFILIADOS PRO</strong> — Todos os direitos reservados.</p>
-    <p>Site de marketing de afiliados | Transparência e qualidade sempre.</p>
-</footer>
-
-</body>
-</html>
+<!-- FOOTER -->
+<footer id="contato">
+    <div class="footer-bottom" style="border: none; padding-top: 0; margin-top: 0;">
+        <div class="logo">
+            <div class="logo-icon">V</div>
+            AFILIADOS PRO
+        </div>
+        
+        <nav class="footer-nav">
+            <a href="#inicio">Início</a>
+            <a href="#ofertas">Ofertas</
