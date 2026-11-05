@@ -1,8 +1,145 @@
-<div class="card-afiliado" style="max-width:400px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.2);font-family:Arial,sans-serif;text-align:center;">
-  <div style="height:160px;background:linear-gradient(135deg,#00c896,#0077ff);display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;">🛍️</div>
-  <div style="padding:20px;">
-    <h3 style="margin:0 0 8px;font-size:1.15rem;color:#222;">Oferta Especial</h3>
-    <p style="margin:0 0 16px;font-size:.85rem;color:#666;">Clique e confira essa oportunidade</p>
-    <a href="https://meli.la/25R2eWh" target="_blank" rel="nofollow noopener" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#00c896,#009e77);color:#fff;text-decoration:none;border-radius:50px;font-weight:600;font-size:.95rem;">Quero Acessar</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garimpei Ofertas — Mais vendidos do Mercado Livre</title>
+<meta name="description" content="Seleção dos produtos mais vendidos do Mercado Livre, organizados por categoria. Preços consultados na data indicada. Compre direto no Mercado Livre.">
+<meta property="og:title" content="Garimpei Ofertas — Mais vendidos do Mercado Livre">
+<meta property="og:description" content="Os mais vendidos do Mercado Livre, por categoria. Atualizado com data. Compra direto no ML.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/banner.jpg">
+<meta property="og:url" content="https://SEUDOMINIO.com.br/">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/style.css">
+
+<!-- Google Analytics (cole seu ID e descomente)
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo" aria-label="Garimpei Ofertas — início">
+      <span class="logo-mark">G</span>
+      <span class="logo-text">Garimpei<span>Ofertas</span></span>
+    </a>
+
+    <form class="search" role="search" onsubmit="return false;">
+      <input type="search" id="searchInput" placeholder="Buscar produto…" aria-label="Buscar produto">
+      <button type="submit" aria-label="Buscar">🔍</button>
+    </form>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+    <nav class="main-nav" id="mainNav" aria-label="Menu principal">
+      <a href="#produtos">Ofertas</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#privacidade">Privacidade</a>
+    </nav>
   </div>
-</div>
+</header>
+
+<!-- BANNER -->
+<section class="banner">
+  <img src="assets/banner.jpg" alt="Garimpei Ofertas — os mais vendidos do Mercado Livre" loading="eager">
+  <div class="banner-overlay">
+    <h1>Os mais vendidos do Mercado Livre</h1>
+    <p>Selecionados por categoria. Preço consultado na data indicada.</p>
+    <a href="#produtos" class="btn-primary">Ver ofertas</a>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section id="categorias" class="container categories-section">
+  <h2>Categorias</h2>
+  <div class="categories-scroll" id="categoriesBar"><!-- JS preenche --></div>
+</section>
+
+<!-- CONTEÚDO PRINCIPAL -->
+<main class="container main-layout" id="produtos">
+
+  <!-- SIDEBAR FILTROS -->
+  <aside class="filters" id="filtersPanel" aria-label="Filtros">
+    <div class="filters-head">
+      <h2>Filtros</h2>
+      <button class="filters-close" id="filtersClose" aria-label="Fechar filtros">✕</button>
+    </div>
+
+    <fieldset>
+      <legend>Categoria</legend>
+      <div id="filterCategories"><!-- JS --></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Faixa de preço</legend>
+      <label>De R$ <input type="number" id="priceMin" min="0" placeholder="0"></label>
+      <label>Até R$ <input type="number" id="priceMax" min="0" placeholder="99999"></label>
+    </fieldset>
+
+    <button class="btn-ghost" id="clearFilters">Limpar filtros</button>
+  </aside>
+
+  <!-- LISTA DE PRODUTOS -->
+  <section class="products-area">
+    <div class="products-toolbar">
+      <button class="btn-filter" id="openFilters">Filtrar</button>
+      <span class="result-count" id="resultCount"></span>
+      <span class="updated" id="updatedAt"></span>
+    </div>
+    <div class="products-grid" id="productsGrid"><!-- JS --></div>
+    <p class="empty" id="emptyState" hidden>Nenhum produto encontrado com esses filtros.</p>
+  </section>
+</main>
+
+<!-- SOBRE / PRIVACIDADE -->
+<section id="sobre" class="container info-section">
+  <h2>Sobre</h2>
+  <p>O <strong>Garimpei Ofertas</strong> é um site vitrine que reúne os produtos mais vendidos do Mercado Livre, organizados por categoria. Não vendemos nada diretamente: todos os cliques levam ao anúncio oficial no Mercado Livre, onde a compra é concluída com segurança.</p>
+  <p>Os preços exibidos foram consultados na data indicada em cada card e podem mudar. Sempre confirme o valor atual no anúncio.</p>
+</section>
+
+<section id="privacidade" class="container info-section">
+  <h2>Política de privacidade</h2>
+  <p>Este site não coleta dados pessoais, não tem cadastro, login nem carrinho. A única informação guardada é a sua lista de <strong>favoritos</strong>, salva localmente no seu navegador (localStorage) e que você pode apagar a qualquer momento limpando os dados do site.</p>
+  <p>Usamos links de afiliado do Mercado Livre. Ao clicar, você é redirecionado para o Mercado Livre, que possui sua própria política de privacidade e cookies.</p>
+  <p>Se o Google Analytics estiver ativo, ele coleta dados agregados de navegação (páginas vistas, origem). Você pode desativar com extensões de bloqueio.</p>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark">G</span>
+      <span class="logo-text">Garimpei<span>Ofertas</span></span>
+    </div>
+
+    <div class="trust-badges">
+      <span>🔒 Compra segura no Mercado Livre</span>
+      <span>🚚 Envio pelo ML</span>
+      <span>↩️ Devolução pelo ML</span>
+    </div>
+
+    <p class="affiliate-notice">
+      Este site contém links de afiliado. Podemos receber comissão por compras feitas pelos links, sem custo extra pra você. As compras são feitas diretamente no Mercado Livre.
+    </p>
+    <p class="source">Fonte dos produtos: <a href="https://www.mercadolivre.com.br/mais-vendidos" rel="noopener nofollow" target="_blank">Mercado Livre — Mais vendidos</a></p>
+    <p class="copy">© <span id="year"></span> Garimpei Ofertas</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+<div class="overlay" id="overlay" hidden></div>
+
+<script src="assets/app.js" defer></script>
+</body>
+</html>
